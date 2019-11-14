@@ -1,0 +1,16 @@
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  #config.vm.box = "mayflower/trusty64-puppet3"
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.network "private_network", ip: "192.168.33.11"
+
+  config.vm.synced_folder "./projects", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
+
+  config.vm.provision "puppet", run: "always" do |puppet|
+    puppet.manifests_path = "manifests"
+    puppet.manifest_file  = "provision.pp"
+  end
+end
