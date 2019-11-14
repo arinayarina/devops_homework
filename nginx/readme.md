@@ -6,3 +6,4 @@ sudo vim /etc/hosts
 ```
 192.168.33.11    vagrant-test.local.com
 ```
+Результат будет доступен на http://vagrant-test.local.com/
